@@ -176,4 +176,4 @@ Releases are tagged `vX.Y.Z`, and the major tag (`v1`) moves to the latest compa
 
 ## License
 
-MIT, see [LICENSE](https://github.com/Bordi00/kiwi/edit/main/LICENSE.md).
+MIT, see [LICENSE](https://github.com/Bordi00/kiwi/blob/main/LICENSE.md).
