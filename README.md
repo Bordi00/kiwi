@@ -96,7 +96,7 @@ order: 1             # position in the sidebar; lower comes first
 ```yaml
 jobs:
   site:
-    uses: <owner>/kiwi/.github/workflows/build.yml@v1
+    uses: Bordi00/kiwi/.github/workflows/build.yml@v1
     with:
       engine-ref: v1       # kiwi version to build with; keep it in step with the @ref above
       d2-version: v0.8.2   # D2 release used to render diagrams
@@ -120,7 +120,7 @@ These are only needed when running the build yourself; the reusable workflow set
 You need Node.js 22 or newer, and the `d2` binary on your `PATH` if you want diagrams (pages still render without it).
 
 ```bash
-git clone https://github.com/<owner>/kiwi.git
+git clone https://github.com/Bordi00/kiwi.git
 cd kiwi
 npm install
 
