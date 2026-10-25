@@ -9,11 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4         
+      - uses: actions/checkout@v7         
         with: { path: notes, fetch-depth: 0 }
-      - uses: actions/checkout@v4         
+      - uses: actions/checkout@v7         
         with: { repository: Bordi00/kiwi, ref: "${{ inputs.engine-ref }}", path: engine }
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with: { node-version: 22, cache: npm, cache-dependency-path: engine/package-lock.json }
       - name: Install d2
         env: { D2_VERSION: "${{ inputs.d2-version }}" }
