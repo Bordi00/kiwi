@@ -1,5 +1,6 @@
 # kiwi 
 ![logo](assets/kiwi-logo.svg)
+
 A small, git-native wiki engine for Markdown and [D2](https://d2lang.com) diagrams.
 
 Your notes live in their own git repository. kiwi turns them into a fast static site with GitHub Actions: it renders every D2 diagram to SVG at build time, builds a navigation tree and a search index, and publishes the result to a branch that any static web server can serve. There is no database, no server-side code and no editor to host; git is the storage, the history and the access control.
