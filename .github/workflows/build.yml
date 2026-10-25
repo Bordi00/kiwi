@@ -1,0 +1,35 @@
+name: build-site
+on:
+  workflow_call:
+    inputs:
+      engine-ref: { type: string, default: v1 } 
+      d2-version: { type: string, default: v0.8.2 }
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4         
+        with: { path: notes, fetch-depth: 0 }
+      - uses: actions/checkout@v4         
+        with: { repository: Bordi00/kiwi, ref: "${{ inputs.engine-ref }}", path: engine }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm, cache-dependency-path: engine/package-lock.json }
+      - name: Install d2
+        env: { D2_VERSION: "${{ inputs.d2-version }}" }
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/d2.tgz" "https://github.com/terrastruct/d2/releases/download/${D2_VERSION}/d2-${D2_VERSION}-linux-amd64.tar.gz"
+          tar -xzf "$RUNNER_TEMP/d2.tgz" -C "$RUNNER_TEMP"
+          sudo install -m 0755 "$RUNNER_TEMP/d2-${D2_VERSION}/bin/d2" /usr/local/bin/d2
+      - working-directory: engine
+        env: { CONTENT_DIR: "${{ github.workspace }}/notes/content" }
+        run: npm ci && npm run build
+      - name: Publish to site branch
+        working-directory: engine/dist
+        env: { TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+        run: |
+          git init -q -b site
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A && git commit -q -m "build ${GITHUB_SHA::7}"
+          git push -f -q "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" site

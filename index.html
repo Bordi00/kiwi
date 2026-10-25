@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Notes</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <button class="icon-btn nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <a class="brand" href="#/">Notes</a>
+      <button class="search-btn" type="button">
+        <span>Search</span><kbd>Ctrl K</kbd>
+      </button>
+    </header>
+
+    <div class="layout">
+      <nav class="sidebar" aria-label="Pages"></nav>
+      <main class="page">
+        <div class="page-meta"></div>
+        <article class="markdown"></article>
+      </main>
+      <aside class="toc" aria-label="On this page"></aside>
+    </div>
+
+    <dialog class="search-dialog">
+      <input class="search-input" type="search" placeholder="Search notes…" autocomplete="off" />
+      <ul class="search-results" role="listbox"></ul>
+    </dialog>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

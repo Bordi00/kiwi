@@ -1,0 +1,21 @@
+{
+  "name": "notes",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "content": "node scripts/build-content.mjs",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "highlight.js": "^11.11.1",
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.2.0",
+    "minisearch": "^7.1.2"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3",
+    "vite": "^7.0.0"
+  }
+}
